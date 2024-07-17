@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolex</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, rgba(70, 131, 180, 0.6), rgba(238, 211, 79, 0.6), rgba(0, 255, 255, 0.2));
+        background-color: rgb(0, 0, 0);
+        font-family: cursive;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+        width: 70px;
+        position: absolute;
+        left: 50%;
+        top: 60px;
+        transform: translateX(-50%);
+        z-index: 2;
+    }
+
+    .clock {
+        background-color: lightgray;
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        border: 5px solid darkgray;
+        position: relative;
+        overflow: hidden;
+        box-sizing: border-box;
+        box-shadow:
+            1px 1px 8px rgba(0, 0, 0, 0.7),
+            inset 2px 2px 20px 3px rgba(0, 100, 0, 0.7);
+    }
+
+    .numbers {
+        background: radial-gradient(rgba(221, 153, 8, 0.5), rgba(236, 221, 14, 0.1));
+        border-radius: 50%;
+        width: 350px;
+        height: 350px;
+    }
+
+    .numbers div {
+        position: absolute;
+        font-size: 27px;
+        font-weight: bold;
+        color: lightgoldenrodyellow;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, .7);
+        opacity: .7;
+    }
+
+    .twelve {
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .three {
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .six {
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .nine {
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .arrows {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .clock::before {
+        content: '';
+        bottom: 50%;
+        right: 50%;
+        transform: translate(50%, 50%);
+        width: 25px;
+        height: 25px;
+        background-color: darkgreen;
+        border-radius: 50%;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        z-index: 4;
+        position: absolute;
+    }
+
+    .arrows div {
+        background-color: aliceblue;
+        width: 7px;
+        height: 120px;
+        position: absolute;
+        transform-origin: bottom center;
+        bottom: 50%;
+        z-index: 3;
+        border-radius: 50% 50% 0 0;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        opacity: .9;
+
+    }
+
+    .arrows .hour {
+        height: 80px;
+        transform: rotate(150deg);
+    }
+
+    .arrows .second {
+        background-color: goldenrod;
+        transform: rotate(250deg);
+    }
+</style>
+
+<body>
+    <div class="clock">
+        <div class="numbers">
+            <div class="twelve">12</div>
+            <div class="three">3</div>
+            <div class="six">6</div>
+            <div class="nine">9</div>
+        </div>
+        <div class="arrows">
+            <div class="hour"></div>
+            <div class="minute"></div>
+            <div class="second"></div>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logo_da_Rolex.png/800px-Logo_da_Rolex.png?20210605010030"
+            alt="rolex-logo" />
+    </div>
+    <script>
+
+        const arrHour = document.querySelector('.hour');
+        const arrMinute = document.querySelector('.minute');
+        const arrSecond = document.querySelector('.second');
+
+        updateRolex();
+
+        function updateRolex() {
+
+            const now = new Date();
+            const hour = now.getHours();
+            const minute = now.getMinutes();
+            const second = now.getSeconds();
+
+            arrHour.style.transform = `rotate(${hour * 30}deg)`;
+            arrMinute.style.transform = `rotate(${minute * 6}deg)`;
+            arrSecond.style.transform = `rotate(${second * 6}deg)`;
+
+            setTimeout(updateRolex, 1000);
+        };
+
+    </script>
+
+</body>
+
+</html>
